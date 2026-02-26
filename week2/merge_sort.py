@@ -1,24 +1,43 @@
-def merge(left_list : list , right_list : list):
-    left_size = len(left_list) 
-    right_size = len(right_list)
-    left_pointer = 0
-    right_pointer = 0
-    
-    while(left_pointer < left_list or right_pointer < right_size):
-        
-        if(left_list[left_pointer] >= right_list[right_pointer]):
-            temp = right_list[right_pointer]
-            right_list[right_pointer] = left_list[left_pointer]
-            left_list[left_pointer] = temp
-            
-        
-                   
-    
-    
+import time as t
 
-def merge_sort(L : list , left , right) -> list:
-    mid = (left + right)//2
+def merge(left_list : list , right_list : list):
+    left_len = len(left_list)
+    right_len = len(right_list)
+    l , r = 0 , 0
+
+    merged_list = []
     
-    merge_sort(L[left: mid-1] , left , mid-1)
-    merge_sort(L[mid+1 : right +1] , mid+1 , right)
-    merge(L[left : mid-1] , L[mid+1 , right+1])
+    while(l < left_len and r < right_len):
+        
+        if(left_list[l] <= right_list[r]):
+            merged_list.append(left_list[l])
+            l +=1
+            
+        else:
+            merged_list.append(right_list[r])
+            r+=1
+            
+    merged_list.extend(left_list[l:])
+    merged_list.extend(right_list[r:])
+    
+    return merged_list
+        
+
+def merge_sort(L : list) -> list:
+    
+    if(len(L)<=1):
+        return L
+    
+    mid = len(L)//2
+    
+    left_list = merge_sort(L[:mid])
+    right_list = merge_sort(L[mid:])
+        
+    return merge(left_list , right_list)
+
+start = t.time()
+print(merge_sort(['d2' , 'd1' , 'b3' , 'a4']))
+end = t.time()
+print(f"time taken: {(end - start):.4f}" )
+ 
+print('a2' > 'a1')
