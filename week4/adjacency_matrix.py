@@ -1,15 +1,22 @@
-import numpy as np 
+# import numpy as np 
 
-rng = np.random.default_rng(42)
-x1 = (rng.random((9)) * 2).round(0).astype(np.int32)
-x2 = (rng.random((9)) * 2).round(0).astype(np.int32)
+# rng = np.random.default_rng(42)
+# x1 = (rng.random((9)) * 2).round(0).astype(np.int32)
+# x2 = (rng.random((9)) * 2).round(0).astype(np.int32)
 
-points = np.column_stack((x1, x2))
-adjacency_matrix = np.zeros((3,3))
-print(points)
+# points = np.column_stack((x1, x2))
+# adjacency_matrix = np.zeros((3,3))
+# print(points)
 
-for i in range(points.shape[0]):
-    i , j = points[i , 0] , points[i , 0]
-    adjacency_matrix[i , j] = 1
+# for i in range(points.shape[0]):
+#     i , j = points[i , 0] , points[i , 0]
+#     adjacency_matrix[i , j] = 1
     
-print(adjacency_matrix)
+# print(adjacency_matrix)
+
+
+a = [1,2,3]
+a = [4] + a
+print(a)
+a = a[1:]
+print(a)
