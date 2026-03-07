@@ -30,7 +30,40 @@ class Stack:
         print(stack.pop())
         
         
-  
+def neighbors(adj_matrix , thing):
+    neighbors = []
+    for i in range(adj_matrix.shape[1]):
+        if adj_matrix[thing][i] == 1:
+            neighbors.append(i)
+            
+    return neighbors
+            
+
+def dfs(adjacency_matrix , chosen=1):
+    visited = {}
+    (rows , columns) = adjacency_matrix.shape
+    for i in range(columns):
+        visited[i] = False 
+        
+    visited[chosen] = True
+    stack = Stack(max_len=adjacency_matrix.shape[1])
+    stack.push(chosen)
+    
+    while(not stack.is_empty()):
+        
+        j = stack.pop()
+        for k in neighbors(adjacency_matrix , j):
+            if not visited[k]:
+                visited[k] = True 
+                stack.push(k)
+                
+    return visited
+                
+    
+ 
+    
+    
+
 
 
 
