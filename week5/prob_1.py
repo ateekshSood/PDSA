@@ -6,7 +6,7 @@ def krushkal(distance_map):
         components[u] = u 
         
     edges.sort()
-    
+     
     for (d , u , v) in edges: 
         if components[u] != components[v]:
             TE.append((u,v))
